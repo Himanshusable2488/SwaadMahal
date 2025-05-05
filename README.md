@@ -78,6 +78,9 @@ Open in Browser: <br>
 open app.html <br>
 (or simply double-click app.html in your file manager) <br>
 
+## 🌐 **Live Demo**
+https://himanshusable2488.github.io/SwaadMahal/
+
 <h2>📝 License</h2>
 
 © 2025 Swaad Mahal. All rights reserved.
