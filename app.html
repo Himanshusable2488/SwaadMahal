@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swaad Mahal | Palace of Taste</title>
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav>
+            <div class="logo">
+                <img src="./assets/logo.png" alt="">
+                <div>
+                <h1>Swaad Mahal</h1>
+                <div class="tagline">Taste the Tradition, Feel the Love</div>
+            </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#booking">Book Table</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#cart" id="cart-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </a></li>
+                <li><button id="theme-toggle" class="theme-toggle">
+                    <i class="fas fa-sun"></i>
+                    <span class="sr-only">Toggle theme</span>
+                </button></li>
+            </ul>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main>
+            <!-- Home Section -->
+            <section id="home" class="section active">
+                <div class="hero">
+                    <div class="hero-content">
+                        <h1 class="animate-text">Welcome to <span class="span">Swaad Mahal</span></h1>
+                        <p class="animate-text delay-1">Your Destination for Food, Stay and Celebrations.</p>
+                        <div class="cta-buttons">
+                            <button class="btn primary animate-text delay-2" id="view-menu-btn">Explore Menu</button>
+                            <button class="btn secondary animate-text delay-3" id="book-table-btn">Table Reservation</button>
+                        </div>
+                    </div>
+                    <div class="hero-image animate-fade-in">
+                    <img src="./assets/Owner.png" alt="ghibli-Interior"></div>
+                </div>
+
+                <div class="features">
+                    <div class="feature-card animate-slide-up">
+                        <i class="fa-solid fa-book-open-reader"></i>
+                        <h3>Smart Libraries</h3>
+                        <p>We provide free-of-cost library service on your meal access</p>
+                    </div>
+                    <div class="feature-card animate-slide-up delay-1">
+                        <i class="fas fa-chair"></i>
+                        <h3>Smart Booking</h3>
+                        <p>Reserve your table in advance to ensure the best dining experience.</p>
+                    </div>
+                    <div class="feature-card animate-slide-up delay-2">
+                        <i class="fas fa-star"></i>
+                        <h3>VIP Pass</h3>
+                        <p>Loyal customers unlock exclusive events, items and special offers.</p>
+                    </div>
+                </div>
+
+                <div class="current-time">
+                    <p>Current Time: <span id="current-time-display"></span></p>
+                    <p id="time-based-message"></p>
+                </div>
+            </section>
+
+            <!-- Menu Section -->
+            <section id="menu" class="section">
+                <h2 class="section-title">Our Menu</h2>
+                <p class="section-description">Explore our delicious offerings prepared with love and tradition</p>
+
+                <div class="menu-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="starters">Starters</button>
+                    <button class="filter-btn" data-filter="main-course">Main Course</button>
+                    <button class="filter-btn" data-filter="desserts">Desserts</button>
+                    <button class="filter-btn" data-filter="beverages">Beverages</button>
+                </div>
+
+                <div class="menu-container">
+                    <!-- Starters -->
+                    <div class="menu-item" data-category="starters">
+                        <div class="menu-item-image">
+                            <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950" alt="Samosa">
+                        </div>
+                        <div class="menu-item-content">
+                            <h3 class="menu-item-title">Samosa</h3>
+                            <p class="menu-item-description">Crispy pastry filled with spiced potatoes and peas</p>
+                            <div class="menu-item-price">₹120</div>
+                            <button class="add-to-cart-btn" data-id="1" data-name="Samosa" data-price="120" data-image="https://images.unsplash.com/photo-1601050690597-df0568f70950">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                    <div class="menu-item" data-category="starters">
+                        <div class="menu-item-image">
+                            <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950" alt="Samosa">
+                        </div>
+                        <div class="menu-item-content">
+                            <h3 class="menu-item-title">Samosa</h3>
+                            <p class="menu-item-description">Crispy pastry filled with spiced potatoes and peas</p>
+                            <div class="menu-item-price">₹120</div>
+                            <button class="add-to-cart-btn" data-id="1" data-name="Samosa" data-price="120" data-image="https://images.unsplash.com/photo-1601050690597-df0568f70950">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                    <div class="menu-item" data-category="starters">
+                        <div class="menu-item-image">
+                            <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0" alt="Paneer Tikka">
+                        </div>
+                        <div class="menu-item-content">
+                            <h3 class="menu-item-title">Paneer Tikka</h3>
+                            <p class="menu-item-description">Grilled cottage cheese marinated in spices</p>
+                            <div class="menu-item-price">₹220</div>
+                            <button class="add-to-cart-btn" data-id="2" data-name="Paneer Tikka" data-price="220" data-image="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Main Course -->
+                    <div class="menu-item" data-category="main-course">
+                        <div class="menu-item-image">
+                            <img src="https://plus.unsplash.com/premium_photo-1661419883163-bb4df1c10109" alt="Butter Chicken">
+                        </div>
+                        <div class="menu-item-content">
+                            <h3 class="menu-item-title">Butter Chicken</h3>
+                            <p class="menu-item-description">Tender chicken in a rich tomato and butter sauce</p>
+                            <div class="menu-item-price">₹350</div>
+                            <button class="add-to-cart-btn" data-id="3" data-name="Butter Chicken" data-price="350" data-image="https://plus.unsplash.com/premium_photo-1661419883163-bb4df1c10109">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="main-course">
+                        <div class="menu-item-image">
+                            <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7" alt="Palak Paneer">
+                        </div>
+                        <div class="menu-item-content">
+                            <h3 class="menu-item-title">Palak Paneer</h3>
+                            <p class="menu-item-description">Cottage cheese cubes in a creamy spinach gravy</p>
+                            <div class="menu-item-price">₹280</div>
+                            <button class="add-to-cart-btn" data-id="4" data-name="Palak Paneer" data-price="280" data-image="https://images.unsplash.com/photo-1631452180519-c014fe946bc7">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="main-course">
+                        <div class="menu-item-image">
+                            <img src="https://images.unsplash.com/photo-1604152135912-04a022e23696" alt="Biryani">
+                        </div>
+                        <div class="menu-item-content">
+                            <h3 class="menu-item-title">Chicken Biryani</h3>
+                            <p class="menu-item-description">Fragrant rice cooked with chicken and aromatic spices</p>
+                            <div class="menu-item-price">₹320</div>
+                            <button class="add-to-cart-btn" data-id="5" data-name="Chicken Biryani" data-price="320" data-image="https://images.unsplash.com/photo-1604152135912-04a022e23696">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Desserts -->
+                    <div class="menu-item" data-category="desserts">
+                        <div class="menu-item-image">
+                            <img src="https://images.unsplash.com/photo-1666190092159-3171cf0fbb12" alt="Gulab Jamun">
+                        </div>
+                        <div class="menu-item-content">
+                            <h3 class="menu-item-title">Gulab Jamun</h3>
+                            <p class="menu-item-description">Soft milk solids balls soaked in rose-flavored sugar syrup</p>
+                            <div class="menu-item-price">₹150</div>
+                            <button class="add-to-cart-btn" data-id="6" data-name="Gulab Jamun" data-price="150" data-image="https://images.unsplash.com/photo-1666190092159-3171cf0fbb12">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="desserts">
+                        <div class="menu-item-image">
+                            <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c" alt="Chocolate Cake">
+                        </div>
+                        <div class="menu-item-content">
+                            <h3 class="menu-item-title">Chocolate Cake</h3>
+                            <p class="menu-item-description">Soft cottage cheese patties soaked in sweetened, thickened milk</p>
+                            <div class="menu-item-price">₹180</div>
+                            <button class="add-to-cart-btn" data-id="7" data-name="Chocolate Cake" data-price="180" data-image="https://images.unsplash.com/photo-1606313564200-e75d5e30476c">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Beverages -->
+                    <div class="menu-item" data-category="beverages">
+                        <div class="menu-item-image">
+                            <img src="https://images.unsplash.com/photo-1571934811356-5cc061b6821f" alt="Masala Chai">
+                        </div>
+                        <div class="menu-item-content">
+                            <h3 class="menu-item-title">Masala Chai</h3>
+                            <p class="menu-item-description">Traditional Indian spiced tea with milk</p>
+                            <div class="menu-item-price">₹80</div>
+                            <button class="add-to-cart-btn" data-id="8" data-name="Masala Chai" data-price="80" data-image="https://images.unsplash.com/photo-1571934811356-5cc061b6821f">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item" data-category="beverages">
+                        <div class="menu-item-image">
+                            <img src="https://images.unsplash.com/photo-1697642452436-9c40773cbcbb" alt="Mango Lassi">
+                        </div>
+                        <div class="menu-item-content">
+                            <h3 class="menu-item-title">Mango Lassi</h3>
+                            <p class="menu-item-description">Refreshing yogurt drink blended with mango pulp</p>
+                            <div class="menu-item-price">₹120</div>
+                            <button class="add-to-cart-btn" data-id="9" data-name="Mango Lassi" data-price="120" data-image="https://images.unsplash.com/photo-1697642452436-9c40773cbcbb">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Booking Section -->
+            <section id="booking" class="section">
+                <h2 class="section-title">Reserve Your Table</h2>
+                <p class="section-description">Book your table in advance to ensure the best dining experience</p>
+
+                <div class="booking-container">
+                    <div class="booking-form">
+                        <form id="table-booking-form">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="date">Date</label>
+                                    <input type="date" id="date" name="date" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="time">Time</label>
+                                    <input type="time" id="time" name="time" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="guests">Number of Guests</label>
+                                    <select id="guests" name="guests" required>
+                                        <option value="">Select</option>
+                                        <option value="1">1 Person</option>
+                                        <option value="2">2 People</option>
+                                        <option value="3">3 People</option>
+                                        <option value="4">4 People</option>
+                                        <option value="5">5 People</option>
+                                        <option value="6">6+ People</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="occasion">Occasion (Optional)</label>
+                                    <select id="occasion" name="occasion">
+                                        <option value="">Select</option>
+                                        <option value="birthday">Birthday</option>
+                                        <option value="anniversary">Anniversary</option>
+                                        <option value="business">Business Meal</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="special-requests">Special Requests (Optional)</label>
+                                <textarea id="special-requests" name="special-requests" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn primary" id="submit-booking">Confirm Reservation</button>
+                        </form>
+                        <div id="booking-message" class="message success" style="display: none;"></div>
+                    </div>
+                    <div class="booking-info">
+                        <h3>Reservation Information</h3>
+                        <p>Please note the following information regarding your reservation:</p>
+                        <ul class="info-list">
+                            <li><i class="fas fa-clock"></i> Reservations are held for 15 minutes past the booking time</li>
+                            <li><i class="fas fa-users"></i> For groups larger than 6, please call us directly</li>
+                            <li><i class="fas fa-calendar-alt"></i> We recommend booking at least 2 days in advance</li>
+                            <li><i class="fas fa-utensils"></i> Special dietary requirements can be noted in the special requests</li>
+                        </ul>
+                        <div class="operating-hours">
+                            <h4>Operating Hours</h4>
+                            <p><strong>Monday - Thursday:</strong> 11:00 AM - 10:00 PM</p>
+                            <p><strong>Friday - Saturday:</strong> 11:00 AM - 11:00 PM</p>
+                            <p><strong>Sunday:</strong> 12:00 PM - 9:00 PM</p>
+                        </div>
+                        <div class="contact-info">
+                            <p>For immediate assistance, please contact us:</p>
+                            <p><i class="fas fa-phone"></i> 9340034781</p>
+                            <p><i class="fas fa-envelope"></i> info@swaadMahal.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="bookings-list" class="bookings-list">
+                    <h3>Your Reservations</h3>
+                    <div id="no-bookings-message">You don't have any reservations yet.</div>
+                    <div id="user-bookings-container"></div>
+                </div>
+            </section>
+
+            <!-- About Us Section -->
+            <section id="about" class="section">
+                <h2 class="section-title">About Us</h2>
+                <p class="section-description">Welcome to Swaad Mahal – Where Taste Meets Tranquility</p>
+
+                <div class="about-container">
+                    <div class="about-intro">
+                        <p class="about-lead">Nestled on the quiet curves of the highway and wrapped in the serene embrace of Saagon (teak) trees, Swaad Mahal isn't just a restaurant — it's an experience. A soulful blend of nature, nostalgia, and nourishment, this is a place where food becomes an expression of love — just like that of a mother and father.</p>
+
+                        <p>At Swaad Mahal, we believe that every meal has a story — and every story deserves the right setting.</p>
+                    </div>
+
+                    <div class="about-sections">
+                        <div class="about-section">
+                            <div class="about-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="about-content">
+                                <h3>Our Natural Connection</h3>
+                                <p>From the moment you step in, you're surrounded by the calming whispers of the forest, the shade of towering sagoon trees, and the scent of fresh earth and spices. Whether you're taking a break from your highway journey or planning a peaceful weekend meal, our space is designed to connect you with nature, simplicity, and soulful food.</p>
+                                <p>We don't just serve meals — we serve memories, made under green canopies and starlit skies.</p>
+                            </div>
+                        </div>
+
+                        <div class="about-section">
+                            <div class="about-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class="about-content">
+                                <h3>What We Offer</h3>
+                                <ul class="about-features">
+                                    <li><i class="fas fa-check-circle"></i> Indoor & Outdoor Dining Areas with nature views</li>
+                                    <li><i class="fas fa-check-circle"></i> Family Rooms & Stay Options for an extended countryside experience</li>
+                                    <li><i class="fas fa-check-circle"></i> Veg & Non-Veg Delicacies prepared with authentic Indian flavors</li>
+                                    <li><i class="fas fa-check-circle"></i> Play Area for Children to enjoy carefree moments</li>
+                                    <li><i class="fas fa-check-circle"></i> Marriage Lawn & Event Spaces for weddings, birthdays & get-togethers</li>
+                                    <li><i class="fas fa-check-circle"></i> Warm Hospitality that feels just like home</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="about-section">
+                            <div class="about-icon">
+                                <i class="fas fa-images"></i>
+                            </div>
+                            <div class="about-content">
+                                <h3>Gallery</h3>
+                                <p class="quote">"A picture is worth a thousand flavors."</p>
+                                <p>Our gallery captures the true essence of Swaad Mahal — from the golden glow of our lamps to the greenery that hugs every corner. Whether it's the laughter of families, the joy of festive events, or the quiet moments under the trees, every image has a story.</p>
+                                <div class="gallery-grid">
+                                    <!-- Game Images -->
+                                    <div class="gallery-item" id="gallery-games-1">
+                                        <img src="./assets/Games.jpg" alt="game1">
+                                    </div>
+                                    <div class="gallery-item" id="gallery-games-2">
+                                        <img src="./assets/game2.jpg" alt="game2">
+                                    </div>
+
+                                    <!-- Lawn/Outdoor Images -->
+                                    <div class="gallery-item" id="gallery-lawn-1">
+                                        <img src="./assets/Lawn1.jpg" alt="lawn1">
+                                    </div>
+                                    <div class="gallery-item" id="gallery-lawn-2">
+                                        <img src="./assets/Lawn2.jpg" alt="lawn2">
+                                    </div>
+
+
+                                    <!-- Event Images -->
+                                    <div class="gallery-item" id="gallery-event-1">
+                                        <img src="./assets/swimming pool.jpg" alt="swimming pool">
+                                    </div>
+                                    <div class="gallery-item" id="gallery-event-1">
+                                        <img src="./assets/Event.jpg" alt="games">
+                                    </div>
+                                    <div class="gallery-item" id="gallery-event-2">
+                                        <img src="./assets/event2.jpg" alt="games">
+                                    </div>
+
+                                    <!-- Sagoon Trees Images -->
+                                    <div class="gallery-item" id="gallery-trees-1">
+                                        <img src="./assets/sagoun.jpg" alt="Sagoon tree">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="about-section">
+                            <div class="about-icon">
+                                <i class="fas fa-scroll"></i>
+                            </div>
+                            <div class="about-content">
+                                <h3>A Bit of History</h3>
+                                <p>Legend has it, this spot once served as a resting place for travelers and traders crossing the central forests of India. The Sagoon grove, long believed to bring peace and clarity, became a symbol of warmth and pause. Inspired by this history, we built Swaad Mahal — a modern tribute to tradition, healing spaces, and homemade flavors.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-philosophy">
+                        <h3>Our Philosophy</h3>
+                        <div class="philosophy-content">
+                            <p>At Swaad Mahal, we don't just cook.<br>
+                            We recreate the taste of childhood, the comfort of family kitchens, and the magic of quiet moments in nature.</p>
+                            <p class="philosophy-cta">Come dine with us — where every bite is a blessing, and every visit feels like coming home.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cart Section -->
+            <section id="cart" class="section">
+                <h2 class="section-title">Your Cart</h2>
+                <div id="cart-items-container" class="cart-container">
+                    <!-- Cart items will be dynamically added here -->
+                    <div class="empty-message" id="empty-cart-message">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>Your cart is empty</p>
+                        <button class="btn primary" id="view-menu-from-cart">Browse Menu</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Swaad Mahal</h2>
+                    <p>Where Every Celebration Becomes a Memory</p>
+
+                    <div class="footer-img">
+                        <img src="./assets/footer-img.png" alt="">
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#booking">Book Table</a></li>
+                        <li><a href="#about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Nagpur Bhopal Road,Teh-Betul,Kamath, Multai</p>
+                    <p><i class="fas fa-phone"></i> 9340034781</p>
+                    <p><i class="fas fa-envelope"></i> info@swaadMahal.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Swaad Mahal. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
