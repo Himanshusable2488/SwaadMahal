@@ -1,67 +1,67 @@
 <h1>🌶️ Swaad Mahal - Restaurant Website</h1>
+
 A responsive, interactive website for Swaad Mahal, a traditional Indian restaurant nestled among Saagon trees. It offers a taste of love through authentic Indian cuisine, warm hospitality, and vibrant event spaces.
 
+<h2>📌 Features</h2>
 
-📌 Features
-🌐 Responsive Design – Seamlessly adapts to mobile, tablet, and desktop
-🌙 Dark/Light Mode – Toggle between comfortable viewing themes
-🍽️ Interactive Menu – Filterable items (starters, meals, desserts, beverages)
-📅 Table Reservation System – Simple form with local storage for booking
-🛒 Shopping Cart – Add, update, and remove menu items
-🏡 About Us Section – Storytelling through design and words
-🖼️ Image Gallery – Restaurant, food, and ambiance
-💾 Local Storage – Saves reservations, cart, and theme preferences
+🌐 Responsive Design – Seamlessly adapts to mobile, tablet, and desktop <br>
+🌙 Dark/Light Mode – Toggle between comfortable viewing themes <br>
+🍽️ Interactive Menu – Filterable items (starters, meals, desserts, beverages) <br>
+📅 Table Reservation System – Simple form with local storage for booking <br>
+🛒 Shopping Cart – Add, update, and remove menu items <br>
+🏡 About Us Section – Storytelling through design and words <br>
+🖼️ Image Gallery – Restaurant, food, and ambiance <br>
+💾 Local Storage – Saves reservations, cart, and theme preferences <br>
 
-🛠 Technologies Used
-HTML5
-CSS3 (Custom properties for theming)
-JavaScript (Vanilla)
-Font Awesome (icons)
-Google Fonts
-Local Storage API
+<h2>🛠 Technologies Used></h2>
 
-📂 Project Structure
-bash
-Copy
-Edit
-swaad-mahal/
-├── app.html           # Main HTML structure
-├── app.css            # Styling (responsive + themes)
-├── app.js             # JavaScript for interactivity
-└── assets/            # Media: images, icons, etc.
+HTML5 <br>
+CSS3 (Custom properties for theming) <br>
+JavaScript (Vanilla) <br>
+Font Awesome (icons) <br>
+Google Fonts <br>
+Local Storage API <br>
 
+<h2>📂 Project Structure</h2>
 
-💡 Sections in Detail
+swaad-mahal/ <br>
+├── app.html           # Main HTML structure <br>
+├── app.css            # Styling (responsive + themes) <br>
+├── app.js             # JavaScript for interactivity <br>
+└── assets/            # Media: images, icons, etc. <br>
 
-🏠 Home
-Hero section with call-to-action
-Real-time greeting based on current time
+<h2>💡 Sections in Detail</h2>
+
+<h3>🏠 Home</h3>
+Hero section with call-to-action <br>
+Real-time greeting based on current time <br>
 Feature highlights
 
-🍛 Menu
-Filterable food items
-Add to cart
-Categories: Starters, Main Course, Desserts, Beverages
+<h3>🍛 Menu</h3>
+Filterable food items <br>
+Add to cart <br>
+Categories: Starters, Main Course, Desserts, Beverages <br>
 
-📖 About Us
-Love of mother and father through food
-Located in a natural Saagon tree environment
-Services: Dining, Rooms, Marriage Lawn, Kids Zone, Small Events
+<h3>📖 About Us</h3>
+Love of mother and father through food <br>
+Located in a natural Saagon tree environment <br>
+Services: Dining, Rooms, Marriage Lawn, Kids Zone, Small Events <br>
 
-📅 Book Table
-Form with date, time, party size, and notes
-View or cancel existing reservations
+<h3>📅 Book Table</h3>
+Form with date, time, party size, and notes <br>
+View or cancel existing reservations <br>
 
-🛒 Cart
-Add/remove/update items
-View total bill
+<h3>🛒 Cart</h3>
+Add/remove/update items <br>
+View total bill <br>
 
-📞 Footer
-Quick navigation
-Contact & social media
-Copyright
+<h3>📞 Footer</h3>
+Quick navigation <br>
+Contact & social media <br>
+Copyright <br>
 
-📸 Screenshots
+<h2>📸 Screenshots</h2>
+
 | Homepage | Menu | Reservation |
 |----------|------|-------------|
 | ![Home](screenshots/home.png) | ![Menu](screenshots/menu.png) | ![Booking](screenshots/reservation.png) |
@@ -70,13 +70,14 @@ Copyright
 |----------|------|
 | ![About](screenshots/about.png) | ![Cart](screenshots/cart.png) |
 
-🚀 Getting Started
-Clone the repository:
-git clone https://github.com/yourusername/swaad-mahal.git
-cd swaad-mahal
-Open in Browser:
-open app.html
-(or simply double-click app.html in your file manager)
+<h2>🚀 Getting Started</h2>
 
-📝 License
+Clone the repository:git clone https://github.com/Himanshusable2488/swaad-mahal.git <br>
+cd swaad-mahal <br>
+Open in Browser: <br>
+open app.html <br>
+(or simply double-click app.html in your file manager) <br>
+
+<h2>📝 License</h2>
+
 © 2025 Swaad Mahal. All rights reserved.
