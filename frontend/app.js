@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
 
     // Initialize empty cart
-    let cart = [];
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
     updateCartCount();
 
     // Theme Toggle Functionality
@@ -218,6 +218,10 @@ document.addEventListener('DOMContentLoaded', function() {
         cartSummary.id = 'cart-summary';
         cartSummary.className = 'cart-summary';
 
+        if (cart.length === 0) {
+    alert("Cart is empty!");
+    return;
+} 
         // Calculate subtotal
         let subtotal = 0;
         cart.forEach(item => {
@@ -280,6 +284,37 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+
+document.addEventListener('click', async function(e) {
+    const button = e.target.closest('#proceed-to-payment-btn');
+
+    if (button) {
+
+        let subtotal = 0;
+        cart.forEach(item => {
+            subtotal += item.price * item.quantity;
+        });
+
+        try {
+            await fetch('http://localhost:5000/api/orders', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    cart: cart,
+                    total: subtotal
+                })
+            });
+
+            alert("Order placed successfully!");
+            cart = [];
+            updateCartCount();
+
+        } catch (error) {
+            console.error(error);
+            alert("Order failed");
+        }
+    }
+});
 
     function addToCart(id, name, price, image) {
         // Check if item already exists in cart
@@ -445,159 +480,90 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Booking System
     const tableBookingForm = document.getElementById('table-booking-form');
-    const bookingMessage = document.getElementById('booking-message');
-    const userBookingsContainer = document.getElementById('user-bookings-container');
-    const noBookingsMessage = document.getElementById('no-bookings-message');
+const userBookingsContainer = document.getElementById('user-bookings-container');
+const noBookingsMessage = document.getElementById('no-bookings-message');
 
-    // Load bookings from localStorage
-    let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
-
-    // Display existing bookings
-    function displayBookings() {
-        if (bookings.length === 0) {
-            if (noBookingsMessage) noBookingsMessage.style.display = 'block';
-            if (userBookingsContainer) userBookingsContainer.innerHTML = '';
-            return;
-        }
-
-        if (noBookingsMessage) noBookingsMessage.style.display = 'none';
-        if (!userBookingsContainer) return;
+async function loadBookings() {
+    try {
+        const response = await fetch('http://localhost:5000/api/bookings');
+        const bookings = await response.json();
 
         userBookingsContainer.innerHTML = '';
 
-        // Sort bookings by date and time
-        bookings.sort((a, b) => {
-            const dateA = new Date(`${a.date}T${a.time}`);
-            const dateB = new Date(`${b.date}T${b.time}`);
-            return dateA - dateB;
-        });
+        if (bookings.length === 0) {
+            noBookingsMessage.style.display = 'block';
+            return;
+        }
 
-        bookings.forEach((booking, index) => {
-            const bookingDate = new Date(`${booking.date}T${booking.time}`);
-            const formattedDate = bookingDate.toLocaleDateString('en-US', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-            const formattedTime = bookingDate.toLocaleTimeString('en-US', {
-                hour: '2-digit',
-                minute: '2-digit'
-            });
+        noBookingsMessage.style.display = 'none';
 
+        bookings.forEach(booking => {
             const bookingCard = document.createElement('div');
             bookingCard.className = 'booking-card';
+
             bookingCard.innerHTML = `
                 <h4>Reservation for ${booking.name}</h4>
-                <div class="booking-details">
-                    <div class="booking-detail">
-                        <i class="fas fa-calendar-alt"></i>
-                        <span>${formattedDate}</span>
-                    </div>
-                    <div class="booking-detail">
-                        <i class="fas fa-clock"></i>
-                        <span>${formattedTime}</span>
-                    </div>
-                    <div class="booking-detail">
-                        <i class="fas fa-users"></i>
-                        <span>${booking.guests} ${booking.guests === '1' ? 'Person' : 'People'}</span>
-                    </div>
-                    ${booking.occasion ? `
-                    <div class="booking-detail">
-                        <i class="fas fa-glass-cheers"></i>
-                        <span>${booking.occasion.charAt(0).toUpperCase() + booking.occasion.slice(1)}</span>
-                    </div>
-                    ` : ''}
-                </div>
-                ${booking.specialRequests ? `
-                <div class="special-requests">
-                    <p><strong>Special Requests:</strong> ${booking.specialRequests}</p>
-                </div>
-                ` : ''}
-                <div class="booking-actions">
-                    <button class="cancel-booking" data-index="${index}">Cancel Reservation</button>
-                </div>
+                <p>Date: ${booking.booking_date}</p>
+                <p>Time: ${booking.booking_time}</p>
+                <p>Guests: ${booking.guests}</p>
+                <button class="cancel-booking" data-id="${booking.id}">
+                    Cancel Reservation
+                </button>
             `;
 
             userBookingsContainer.appendChild(bookingCard);
         });
 
-        // Add event listeners to cancel buttons
-        const cancelButtons = document.querySelectorAll('.cancel-booking');
-        cancelButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const index = parseInt(this.getAttribute('data-index'));
-                cancelBooking(index);
+        // Delete booking
+        document.querySelectorAll('.cancel-booking').forEach(btn => {
+            btn.addEventListener('click', async function() {
+                const id = this.getAttribute('data-id');
+
+                await fetch(`http://localhost:5000/api/bookings/${id}`, {
+                    method: 'DELETE'
+                });
+
+                loadBookings();
             });
         });
-    }
 
-    // Cancel a booking
-    function cancelBooking(index) {
-        if (confirm('Are you sure you want to cancel this reservation?')) {
-            bookings.splice(index, 1);
-            localStorage.setItem('bookings', JSON.stringify(bookings));
-            displayBookings();
-            showNotification('Reservation cancelled successfully', 'success');
-        }
+    } catch (error) {
+        console.error(error);
     }
+}
 
-    // Handle form submission
     if (tableBookingForm) {
-        tableBookingForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+    tableBookingForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
 
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const date = document.getElementById('date').value;
-            const time = document.getElementById('time').value;
-            const guests = document.getElementById('guests').value;
-            const occasion = document.getElementById('occasion').value;
-            const specialRequests = document.getElementById('special-requests').value;
+        const bookingData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            date: document.getElementById('date').value,
+            time: document.getElementById('time').value,
+            guests: document.getElementById('guests').value,
+            occasion: document.getElementById('occasion').value,
+            specialRequests: document.getElementById('special-requests').value
+        };
 
-            // Create booking object
-            const booking = {
-                name,
-                email,
-                phone,
-                date,
-                time,
-                guests,
-                occasion,
-                specialRequests,
-                id: Date.now() // Unique ID for the booking
-            };
+        try {
+            await fetch('http://localhost:5000/api/bookings', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(bookingData)
+            });
 
-            // Add to bookings array
-            bookings.push(booking);
-
-            // Save to localStorage
-            localStorage.setItem('bookings', JSON.stringify(bookings));
-
-            // Show success message
-            if (bookingMessage) {
-                bookingMessage.textContent = 'Your table has been reserved successfully!';
-                bookingMessage.style.display = 'block';
-
-                // Hide message after 3 seconds
-                setTimeout(() => {
-                    bookingMessage.style.display = 'none';
-                }, 3000);
-            }
-
-            // Show notification
-            showNotification('Table reserved successfully!', 'success');
-
-            // Reset form
             tableBookingForm.reset();
+            loadBookings();
+            alert("Booking confirmed!");
 
-            // Update bookings display
-            displayBookings();
-        });
-    }
-
+        } catch (error) {
+            console.error(error);
+            alert("Error saving booking");
+        }
+    });
+}
     // Initialize bookings display
-    displayBookings();
+    loadBookings();
 });
