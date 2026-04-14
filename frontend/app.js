@@ -1,3 +1,5 @@
+const BASE_URL = "https://swaadmahal-backend.onrender.com/";
+
 // DOM Elements
 document.addEventListener('DOMContentLoaded', function() {
     // Theme Toggle
@@ -296,7 +298,7 @@ document.addEventListener('click', async function(e) {
         });
 
         try {
-            await fetch('http://localhost:5000/api/orders', {
+            await fetch(`${BASE_URL}/api/orders`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -485,7 +487,7 @@ const noBookingsMessage = document.getElementById('no-bookings-message');
 
 async function loadBookings() {
     try {
-        const response = await fetch('http://localhost:5000/api/bookings');
+        const response = await fetch(`${BASE_URL}/api/bookings`);
         const bookings = await response.json();
 
         userBookingsContainer.innerHTML = '';
@@ -519,7 +521,7 @@ async function loadBookings() {
             btn.addEventListener('click', async function() {
                 const id = this.getAttribute('data-id');
 
-                await fetch(`http://localhost:5000/api/bookings/${id}`, {
+                await fetch(`${BASE_URL}/api/bookings/${id}`, {
                     method: 'DELETE'
                 });
 
@@ -548,7 +550,7 @@ async function loadBookings() {
         };
 
         try {
-            await fetch('http://localhost:5000/api/bookings', {
+            await fetch(`${BASE_URL}/api/bookings`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(bookingData)
