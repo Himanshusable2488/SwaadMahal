@@ -1,4 +1,4 @@
-const BASE_URL = "https://swaadmahal-backend.onrender.com/";
+const BASE_URL = "https://swaadmahal-backend.onrender.com";
 
 // DOM Elements
 document.addEventListener('DOMContentLoaded', function() {
